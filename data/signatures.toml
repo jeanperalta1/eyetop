@@ -1,0 +1,1448 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  eyetop built-in signature catalog
+# ─────────────────────────────────────────────────────────────────────────────
+
+# ═══ Access control ══════════════════════════════════════════════════════════
+
+[[signature]]
+id = "hid-global"
+name = "HID access reader / credential"
+class = "access_control"
+radio = "bluetooth"
+notes = "HID Global makes door badge readers and phone-based access credentials (HID Mobile Access)."
+rules = [{ kind = "ble_company", value = "0124" }]
+
+[[signature]]
+id = "assa-abloy"
+name = "ASSA ABLOY / Yale lock"
+class = "access_control"
+radio = "bluetooth"
+notes = "ASSA ABLOY group locks and readers (Yale, Aperio and others)."
+rules = [{ kind = "ble_company", value = "012E" }]
+
+[[signature]]
+id = "allegion"
+name = "Schlage / Allegion lock"
+class = "access_control"
+radio = "bluetooth"
+notes = "Allegion makes Schlage smart locks and commercial access hardware."
+rules = [{ kind = "ble_company", value = "013B" }]
+
+[[signature]]
+id = "august-lock"
+name = "August smart lock"
+class = "access_control"
+radio = "bluetooth"
+rules = [{ kind = "ble_company", value = "01D1" }]
+
+[[signature]]
+id = "kwikset"
+name = "Kwikset smart lock"
+class = "access_control"
+radio = "bluetooth"
+notes = "Kwikset belongs to Spectrum Brands (company 0x0356)."
+rules = [{ kind = "ble_company", value = "0356" }]
+
+[[signature]]
+id = "nuki"
+name = "Nuki smart lock"
+class = "access_control"
+radio = "bluetooth"
+notes = "Nuki locks advertise names like Nuki_1A2B3C4D."
+rules = [{ kind = "name_regex", value = '^Nuki_' }]
+
+
+# ═══ Audio ═══════════════════════════════════════════════════════════════════
+
+[[signature]]
+id = "apple-airpods"
+name = "AirPods / Beats"
+class = "audio"
+radio = "bluetooth"
+notes = "Apple 'proximity pairing' advert (type 0x07). Sent by AirPods and Beats, mostly while the case lid is open or the buds are in use."
+rules = [
+    { kind = "ble_company", value = "004C:07" },
+    { kind = "ble_company", value = "00CC" },
+]
+
+[[signature]]
+id = "google-fast-pair"
+name = "Fast Pair headphones"
+class = "audio"
+radio = "bluetooth"
+notes = "Google Fast Pair service (0xFE2C). Mostly earbuds and headphones advertising to Android phones. Some other accessories use it too."
+rules = [{ kind = "ble_service", value = "FE2C" }]
+
+[[signature]]
+id = "bose"
+name = "Bose"
+class = "audio"
+radio = "bluetooth"
+rules = [{ kind = "ble_company", value = "009E" }]
+
+[[signature]]
+id = "sony"
+name = "Sony"
+class = "audio"
+radio = "bluetooth"
+notes = "Sony Corporation company ID. Usually headphones (WH-/WF- series) but also some Sony TVs and cameras."
+rules = [
+    { kind = "ble_company", value = "012D" },
+    { kind = "name_regex", value = '^(WH|WF|WI)-' },
+]
+
+[[signature]]
+id = "jbl-harman"
+name = "JBL / Harman"
+class = "audio"
+radio = "bluetooth"
+rules = [
+    { kind = "ble_company", value = "0057" },
+    { kind = "name_regex", value = '^JBL ' },
+]
+
+[[signature]]
+id = "sennheiser"
+name = "Sennheiser"
+class = "audio"
+radio = "bluetooth"
+rules = [{ kind = "ble_company", value = "0494" }]
+
+[[signature]]
+id = "skullcandy"
+name = "Skullcandy"
+class = "audio"
+radio = "bluetooth"
+rules = [{ kind = "ble_company", value = "07C9" }]
+
+[[signature]]
+id = "nothing"
+name = "Nothing (ear / phone)"
+class = "audio"
+radio = "bluetooth"
+rules = [{ kind = "ble_company", value = "0CCB" }]
+
+[[signature]]
+id = "bang-olufsen"
+name = "Bang & Olufsen"
+class = "audio"
+radio = "bluetooth"
+rules = [{ kind = "ble_company", value = "0103" }]
+
+[[signature]]
+id = "marshall"
+name = "Marshall"
+class = "audio"
+radio = "bluetooth"
+rules = [{ kind = "ble_company", value = "065A" }]
+
+[[signature]]
+id = "galaxy-buds"
+name = "Samsung Galaxy Buds"
+class = "audio"
+radio = "bluetooth"
+rules = [
+    { kind = "name_regex", value = '(?i)galaxy buds|^buds ?(2|3|pro|live|fe)' },
+]
+
+[[signature]]
+id = "le-audio-broadcast"
+name = "Auracast broadcast"
+class = "audio"
+radio = "bluetooth"
+notes = "Bluetooth LE Audio broadcast (Auracast). Public audio streams, TVs and some earbuds."
+rules = [{ kind = "ble_service", value = "1852" }]
+
+
+# ═══ Cameras ═════════════════════════════════════════════════════════════════
+
+[[signature]]
+id = "wyze"
+name = "Wyze camera"
+class = "cameras"
+rules = [
+    { kind = "vendor", value = "Wyze" },
+    { kind = "ble_company", value = "0870" },
+]
+
+[[signature]]
+id = "ring"
+name = "Ring doorbell / camera"
+class = "cameras"
+radio = "wifi"
+notes = "Ring devices use Amazon network hardware, so only the setup hotspot is recognisable on its own."
+rules = [{ kind = "name", value = "Ring Setup" }]
+
+[[signature]]
+id = "blink"
+name = "Blink camera"
+class = "cameras"
+radio = "wifi"
+rules = [{ kind = "vendor", value = "Blink" }]
+
+[[signature]]
+id = "arlo"
+name = "Arlo camera"
+class = "cameras"
+rules = [
+    { kind = "vendor", value = "Arlo" },
+    { kind = "ble_company", value = "0C19" },
+]
+
+[[signature]]
+id = "eufy"
+name = "eufy / Anker camera"
+class = "cameras"
+notes = "Anker owns eufy. The Anker company ID is also used by power banks and chargers."
+rules = [
+    { kind = "ble_company", value = "0CC2" },
+    { kind = "name", value = "eufy" },
+]
+
+[[signature]]
+id = "hikvision"
+name = "Hikvision camera"
+class = "cameras"
+radio = "wifi"
+rules = [{ kind = "vendor", value = "Hikvision" }]
+
+[[signature]]
+id = "dahua"
+name = "Dahua camera"
+class = "cameras"
+radio = "wifi"
+rules = [{ kind = "vendor", value = "Dahua" }]
+
+[[signature]]
+id = "axis"
+name = "Axis camera"
+class = "cameras"
+radio = "wifi"
+rules = [{ kind = "vendor", value = "Axis Communications" }]
+
+[[signature]]
+id = "reolink"
+name = "Reolink camera"
+class = "cameras"
+rules = [
+    { kind = "vendor", value = "Reolink" },
+    { kind = "name", value = "Reolink" },
+]
+
+[[signature]]
+id = "amcrest-lorex"
+name = "Amcrest / Lorex camera"
+class = "cameras"
+radio = "wifi"
+rules = [
+    { kind = "vendor", value = "Amcrest" },
+    { kind = "vendor", value = "Lorex" },
+]
+
+[[signature]]
+id = "nest-device"
+name = "Google Nest (cam / thermostat)"
+class = "cameras"
+radio = "wifi"
+notes = "Nest Labs network hardware: cameras, doorbells, thermostats and smoke alarms."
+rules = [{ kind = "vendor", value = "Nest Labs" }]
+
+[[signature]]
+id = "simplisafe"
+name = "SimpliSafe"
+class = "cameras"
+radio = "wifi"
+rules = [{ kind = "vendor", value = "SimpliSafe" }]
+
+[[signature]]
+id = "gopro"
+name = "GoPro"
+class = "cameras"
+rules = [
+    { kind = "ble_company", value = "02F2" },
+    { kind = "ble_service", value = "FEA6" },
+    { kind = "vendor", value = "GoPro" },
+]
+
+[[signature]]
+id = "generic-ip-camera"
+name = "IP camera (generic)"
+class = "cameras"
+radio = "wifi"
+notes = "Default hotspot names used by many cheap Wi-Fi cameras while they are being set up."
+rules = [
+    { kind = "name_regex", value = '(?i)^(ipcam|ip-cam|hipcam|hdwificam|tapo_cam|wansview)' },
+]
+
+
+# ═══ Drones ══════════════════════════════════════════════════════════════════
+
+[[signature]]
+id = "dji"
+name = "DJI drone / controller"
+class = "drones"
+rules = [
+    { kind = "vendor", value = "DJI" },
+    { kind = "ble_company", value = "08AA" },
+    { kind = "name_regex", value = '(?i)^(dji|tello-|mavic|spark-)' },
+]
+
+[[signature]]
+id = "parrot"
+name = "Parrot drone"
+class = "drones"
+radio = "wifi"
+notes = "Wi-Fi only: Parrot's Bluetooth company ID belongs to its car-kit business."
+rules = [
+    { kind = "vendor", value = "PARROT" },
+    { kind = "name_regex", value = '(?i)^(bebop|anafi|disco-)' },
+]
+
+[[signature]]
+id = "skydio"
+name = "Skydio drone"
+class = "drones"
+rules = [
+    { kind = "vendor", value = "Skydio" },
+    { kind = "name", value = "Skydio" },
+]
+
+[[signature]]
+id = "autel-yuneec"
+name = "Autel / Yuneec drone"
+class = "drones"
+rules = [
+    { kind = "name_regex", value = '(?i)^autel' },
+    { kind = "vendor", value = "Yuneec" },
+]
+
+[[signature]]
+id = "remote-id-ble"
+name = "Drone Remote ID (Bluetooth)"
+class = "drones"
+radio = "bluetooth"
+decoder = "remote_id"
+notes = "ASTM F3411 / Open Drone ID: service data 0xFFFA with app code 0x0D. Required on most drones in the US and EU; it carries the drone's ID and position."
+rules = [{ kind = "ble_service", value = "FFFA:0D" }]
+
+[[signature]]
+id = "remote-id-wifi"
+name = "Drone Remote ID (Wi-Fi)"
+class = "drones"
+radio = "wifi"
+notes = "Remote ID inside a Wi-Fi beacon (vendor element FA:0B:BC type 0x0D, or the French 6A:5C:35 format). Seen only with the iw backend."
+rules = [
+    { kind = "wifi_ie", value = "FA:0B:BC:0D" },
+    { kind = "wifi_ie", value = "6A:5C:35:01" },
+]
+
+
+# ═══ Finder tags ═════════════════════════════════════════════════════════════
+
+[[signature]]
+id = "apple-find-my-separated"
+name = "Apple Find My (separated)"
+class = "finder_tags"
+radio = "bluetooth"
+decoder = "apple_find_my"
+notes = "Find My offline-finding advert with the full public key (type 0x12, length 0x19): an AirTag or Find My accessory that has been away from its owner for a while. Its key and address change once a day."
+extra_attention = "A tracker away from its owner. If it keeps showing up as you move (see 'Moving with you'), check your bag, car and clothes. iPhones and Android phones can scan for it and play a sound."
+rules = [{ kind = "ble_company", value = "004C:12 19" }]
+
+[[signature]]
+id = "apple-find-my-nearby"
+name = "Apple Find My (near owner)"
+class = "finder_tags"
+radio = "bluetooth"
+decoder = "apple_find_my"
+notes = "Short Find My advert (type 0x12, length 0x02): the owner's iPhone was seen in the last ~15 minutes. Normal in public places."
+rules = [{ kind = "ble_company", value = "004C:12 02" }]
+
+[[signature]]
+id = "tile"
+name = "Tile tracker"
+class = "finder_tags"
+radio = "bluetooth"
+rules = [
+    { kind = "ble_service", value = "FEED" },
+    { kind = "ble_service", value = "FEEC" },
+    { kind = "ble_company", value = "067C" },
+]
+
+[[signature]]
+id = "samsung-smarttag"
+name = "Samsung SmartTag"
+class = "finder_tags"
+radio = "bluetooth"
+notes = "0xFD5A is SmartThings Find (registered tags), 0xFD59 is used while a tag is being set up."
+rules = [
+    { kind = "ble_service", value = "FD5A" },
+    { kind = "ble_service", value = "FD59" },
+]
+
+[[signature]]
+id = "chipolo"
+name = "Chipolo tracker"
+class = "finder_tags"
+radio = "bluetooth"
+rules = [
+    { kind = "ble_service", value = "FE33" },
+    { kind = "ble_company", value = "08C3" },
+]
+
+[[signature]]
+id = "google-find-hub"
+name = "Google Find Hub tag"
+class = "finder_tags"
+radio = "bluetooth"
+notes = "Find Hub (formerly Find My Device) network accessory: Eddystone service 0xFEAA, frame type 0x40."
+rules = [{ kind = "ble_service", value = "FEAA:40" }]
+
+[[signature]]
+id = "google-find-hub-separated"
+name = "Google Find Hub tag (separated)"
+class = "finder_tags"
+radio = "bluetooth"
+notes = "Frame type 0x41 means 'unwanted tracking protection mode': the tag has been away from its owner."
+extra_attention = "A tracker in unwanted-tracking mode. If it travels with you, look for it and consider an Android 'Unknown tracker' scan."
+rules = [{ kind = "ble_service", value = "FEAA:41" }]
+
+
+# ═══ Glasses ═════════════════════════════════════════════════════════════════
+
+[[signature]]
+id = "meta-glasses"
+name = "Meta / Ray-Ban glasses"
+class = "glasses"
+radio = "bluetooth"
+notes = "Meta Platforms (0x01AB, 0x058E) and Luxottica (0x0D53) company IDs, as used by the Nearby Glasses project. Meta Quest headsets share these IDs, so false positives happen."
+extra_attention = "Camera glasses can take photos and video. Look for someone wearing glasses with a small light near the hinge."
+rules = [
+    { kind = "ble_company", value = "01AB" },
+    { kind = "ble_company", value = "058E" },
+    { kind = "ble_company", value = "0D53" },
+    { kind = "name_regex", value = '(?i)ray-?ban' },
+]
+
+[[signature]]
+id = "snap-spectacles"
+name = "Snap Spectacles"
+class = "glasses"
+radio = "bluetooth"
+extra_attention = "Camera glasses."
+rules = [
+    { kind = "ble_company", value = "03C2" },
+    { kind = "name", value = "Spectacles" },
+]
+
+[[signature]]
+id = "even-g1"
+name = "Even Realities G1"
+class = "glasses"
+radio = "bluetooth"
+notes = "Display glasses (no camera). Each arm advertises separately, e.g. G1_45_L_92333 and G1_45_R_92333."
+rules = [
+    { kind = "ble_company", value = "10F9" },
+    { kind = "name_regex", value = 'G1_\d+_[LR]_' },
+]
+
+[[signature]]
+id = "heycyan-glasses"
+name = "HeyCyan-based camera glasses"
+class = "glasses"
+radio = "bluetooth"
+notes = "Budget camera glasses built on the HeyCyan SDK (several brands)."
+extra_attention = "Camera glasses."
+rules = [
+    { kind = "name", value = "HeyCyan" },
+    { kind = "ble_service", value = "7905FFF0-B5CE-4E99-A40F-4B1E122D00D0" },
+]
+
+[[signature]]
+id = "vuzix"
+name = "Vuzix smart glasses"
+class = "glasses"
+radio = "bluetooth"
+rules = [{ kind = "ble_company", value = "060C" }]
+
+
+# ═══ Health ══════════════════════════════════════════════════════════════════
+
+[[signature]]
+id = "dexcom"
+name = "Dexcom glucose monitor"
+class = "health"
+radio = "bluetooth"
+rules = [
+    { kind = "ble_company", value = "00D0" },
+    { kind = "ble_service", value = "FEBC" },
+    { kind = "name_regex", value = '^Dexcom' },
+]
+
+[[signature]]
+id = "abbott-libre"
+name = "Abbott (FreeStyle Libre)"
+class = "health"
+radio = "bluetooth"
+rules = [{ kind = "ble_company", value = "03BB" }]
+
+[[signature]]
+id = "medtronic"
+name = "Medtronic pump / sensor"
+class = "health"
+radio = "bluetooth"
+rules = [{ kind = "ble_company", value = "01F9" }]
+
+[[signature]]
+id = "omnipod"
+name = "Omnipod (Insulet)"
+class = "health"
+radio = "bluetooth"
+rules = [{ kind = "ble_company", value = "0360" }]
+
+[[signature]]
+id = "omron"
+name = "Omron health device"
+class = "health"
+radio = "bluetooth"
+rules = [
+    { kind = "ble_company", value = "020E" },
+    { kind = "ble_company", value = "02D5" },
+]
+
+[[signature]]
+id = "withings"
+name = "Withings"
+class = "health"
+radio = "bluetooth"
+rules = [{ kind = "ble_company", value = "03FF" }]
+
+[[signature]]
+id = "medical-sensor"
+name = "Medical sensor (standard)"
+class = "health"
+radio = "bluetooth"
+notes = "Advertises a standard Bluetooth health service: blood pressure, glucose, thermometer, continuous glucose, pulse oximeter or weight scale."
+rules = [
+    { kind = "ble_service", value = "1810" },
+    { kind = "ble_service", value = "1808" },
+    { kind = "ble_service", value = "1809" },
+    { kind = "ble_service", value = "181F" },
+    { kind = "ble_service", value = "1822" },
+    { kind = "ble_service", value = "181D" },
+]
+
+[[signature]]
+id = "heart-rate"
+name = "Heart-rate sensor"
+class = "health"
+radio = "bluetooth"
+notes = "Standard Heart Rate service (0x180D): chest straps, watches in broadcast mode, gym equipment."
+rules = [{ kind = "ble_service", value = "180D" }]
+
+[[signature]]
+id = "hearing-aids"
+name = "Hearing aid"
+class = "health"
+radio = "bluetooth"
+rules = [
+    { kind = "ble_service", value = "1854" },
+    { kind = "ble_company", value = "0067" },
+    { kind = "ble_company", value = "0089" },
+]
+
+[[signature]]
+id = "owlet"
+name = "Owlet baby monitor"
+class = "health"
+radio = "bluetooth"
+rules = [{ kind = "ble_company", value = "0E9F" }]
+
+
+# ═══ Home IoT ════════════════════════════════════════════════════════════════
+
+[[signature]]
+id = "lg-webos-tv"
+name = "LG webOS TV"
+class = "home_iot"
+rules = [{ kind = "name", value = "webOS TV" }]
+
+[[signature]]
+id = "samsung-tv"
+name = "Samsung TV"
+class = "home_iot"
+rules = [{ kind = "name", value = "[TV] Samsung" }]
+
+[[signature]]
+id = "roku"
+name = "Roku"
+class = "home_iot"
+rules = [
+    { kind = "vendor", value = "Roku" },
+    { kind = "ble_company", value = "07A2" },
+    { kind = "name_regex", value = '(?i)roku' },
+]
+
+[[signature]]
+id = "vizio"
+name = "Vizio TV"
+class = "home_iot"
+rules = [
+    { kind = "vendor", value = "Vizio" },
+    { kind = "ble_company", value = "0058" },
+]
+
+[[signature]]
+id = "amazon-device"
+name = "Amazon Echo / Fire TV"
+class = "home_iot"
+notes = "Amazon company ID or network hardware: Echo speakers, Fire TV, Kindle, Ring and eero use Amazon parts."
+rules = [
+    { kind = "ble_company", value = "0171" },
+    { kind = "vendor", value = "Amazon Technologies" },
+    { kind = "name_regex", value = '^Fire ?TV' },
+]
+
+[[signature]]
+id = "sonos"
+name = "Sonos speaker"
+class = "home_iot"
+rules = [
+    { kind = "ble_company", value = "05A7" },
+    { kind = "vendor", value = "Sonos" },
+]
+
+[[signature]]
+id = "philips-hue"
+name = "Philips Hue / Signify"
+class = "home_iot"
+rules = [
+    { kind = "ble_service", value = "FE0F" },
+    { kind = "ble_company", value = "060F" },
+    { kind = "vendor", value = "Signify" },
+    { kind = "vendor", value = "Philips Lighting" },
+]
+
+[[signature]]
+id = "switchbot"
+name = "SwitchBot"
+class = "home_iot"
+radio = "bluetooth"
+rules = [{ kind = "ble_company", value = "0969" }]
+
+[[signature]]
+id = "xiaomi-mihome"
+name = "Xiaomi Mi Home device"
+class = "home_iot"
+radio = "bluetooth"
+notes = "MiBeacon (service data 0xFE95): sensors, scales, toothbrushes and lights."
+rules = [
+    { kind = "ble_service", value = "FE95" },
+    { kind = "ble_company", value = "038F" },
+]
+
+[[signature]]
+id = "govee"
+name = "Govee sensor / light"
+class = "home_iot"
+rules = [
+    { kind = "name_regex", value = '^(Govee|GVH|ihoment)' },
+    { kind = "vendor", value = "Intellirocks" },
+]
+
+[[signature]]
+id = "tuya"
+name = "Tuya smart device"
+class = "home_iot"
+notes = "Tuya modules are inside many unbranded smart plugs, bulbs and sensors."
+rules = [
+    { kind = "ble_company", value = "07D0" },
+    { kind = "vendor", value = "Tuya" },
+]
+
+[[signature]]
+id = "espressif"
+name = "ESP32 / ESP8266 device"
+class = "home_iot"
+notes = "Espressif chips are in countless smart plugs, sensors and hobby projects — and in some hacking tools."
+rules = [
+    { kind = "vendor", value = "Espressif" },
+    { kind = "ble_company", value = "02E5" },
+]
+
+[[signature]]
+id = "apple-homekit"
+name = "HomeKit accessory"
+class = "home_iot"
+radio = "bluetooth"
+notes = "Apple HomeKit Accessory Protocol advert (Apple type 0x06)."
+rules = [{ kind = "ble_company", value = "004C:06" }]
+
+[[signature]]
+id = "apple-airplay"
+name = "Apple TV / HomePod"
+class = "home_iot"
+radio = "bluetooth"
+notes = "Apple 'AirPlay target' advert (type 0x09). Macs can send it too."
+rules = [{ kind = "ble_company", value = "004C:09" }]
+
+[[signature]]
+id = "matter"
+name = "Matter device (pairing)"
+class = "home_iot"
+radio = "bluetooth"
+notes = "Matter commissioning service 0xFFF6: a smart-home device waiting to be added."
+rules = [{ kind = "ble_service", value = "FFF6" }]
+
+[[signature]]
+id = "printer"
+name = "Printer (Wi-Fi Direct)"
+class = "home_iot"
+rules = [
+    { kind = "name_regex", value = '(?i)^direct-..-(hp|epson|canon|brother|samsung|xerox)' },
+    { kind = "name_regex", value = '(?i)^hp-print-' },
+    { kind = "ble_service", value = "FE78" },
+]
+
+[[signature]]
+id = "ruuvi"
+name = "RuuviTag sensor"
+class = "home_iot"
+radio = "bluetooth"
+rules = [{ kind = "ble_company", value = "0499" }]
+
+
+# ═══ ISP / routers ═══════════════════════════════════════════════════════════
+
+[[signature]]
+id = "arris"
+name = "Arris / CommScope"
+class = "isp_routers"
+radio = "wifi"
+notes = "Cable modems and gateways supplied by many ISPs (Comcast/Xfinity, Spectrum, Cox). Arris is now part of CommScope."
+rules = [
+    { kind = "vendor", value = "Arris" },
+    { kind = "vendor", value = "CommScope" },
+]
+
+[[signature]]
+id = "netgear"
+name = "Netgear"
+class = "isp_routers"
+radio = "wifi"
+rules = [{ kind = "vendor", value = "NETGEAR" }]
+
+[[signature]]
+id = "tp-link"
+name = "TP-Link"
+class = "isp_routers"
+radio = "wifi"
+rules = [{ kind = "vendor", value = "TP-Link" }]
+
+[[signature]]
+id = "linksys"
+name = "Linksys"
+class = "isp_routers"
+radio = "wifi"
+rules = [
+    { kind = "vendor", value = "Linksys" },
+    { kind = "vendor", value = "Cisco-Linksys" },
+]
+
+[[signature]]
+id = "asus"
+name = "ASUS"
+class = "isp_routers"
+radio = "wifi"
+rules = [{ kind = "vendor", value = "ASUSTek" }]
+
+[[signature]]
+id = "ubiquiti"
+name = "Ubiquiti"
+class = "isp_routers"
+radio = "wifi"
+rules = [{ kind = "vendor", value = "Ubiquiti" }]
+
+[[signature]]
+id = "cisco-meraki"
+name = "Cisco / Meraki"
+class = "isp_routers"
+radio = "wifi"
+rules = [{ kind = "vendor", value = "Cisco" }]
+
+[[signature]]
+id = "aruba-hpe"
+name = "Aruba / HPE"
+class = "isp_routers"
+radio = "wifi"
+rules = [
+    { kind = "vendor", value = "Aruba" },
+    { kind = "vendor", value = "Hewlett Packard Enterprise" },
+]
+
+[[signature]]
+id = "ruckus"
+name = "Ruckus"
+class = "isp_routers"
+radio = "wifi"
+rules = [{ kind = "vendor", value = "Ruckus" }]
+
+[[signature]]
+id = "eero"
+name = "eero"
+class = "isp_routers"
+radio = "wifi"
+rules = [{ kind = "vendor", value = "eero" }]
+
+[[signature]]
+id = "google-wifi"
+name = "Google / Nest Wifi"
+class = "isp_routers"
+radio = "wifi"
+rules = [{ kind = "vendor", value = "Google" }]
+
+[[signature]]
+id = "sagemcom"
+name = "Sagemcom"
+class = "isp_routers"
+radio = "wifi"
+rules = [{ kind = "vendor", value = "Sagemcom" }]
+
+[[signature]]
+id = "vantiva"
+name = "Vantiva / Technicolor"
+class = "isp_routers"
+radio = "wifi"
+rules = [
+    { kind = "vendor", value = "Vantiva" },
+    { kind = "vendor", value = "Technicolor" },
+]
+
+[[signature]]
+id = "actiontec"
+name = "Actiontec"
+class = "isp_routers"
+radio = "wifi"
+rules = [{ kind = "vendor", value = "Actiontec" }]
+
+[[signature]]
+id = "calix"
+name = "Calix"
+class = "isp_routers"
+radio = "wifi"
+rules = [{ kind = "vendor", value = "Calix" }]
+
+[[signature]]
+id = "huawei-router"
+name = "Huawei"
+class = "isp_routers"
+radio = "wifi"
+notes = "Huawei routers and also Huawei phone hotspots."
+rules = [{ kind = "vendor", value = "Huawei" }]
+
+[[signature]]
+id = "zte"
+name = "ZTE"
+class = "isp_routers"
+radio = "wifi"
+rules = [{ kind = "vendor", value = "zte" }]
+
+[[signature]]
+id = "fritzbox"
+name = "AVM FRITZ!Box"
+class = "isp_routers"
+radio = "wifi"
+rules = [
+    { kind = "vendor", value = "AVM" },
+    { kind = "name", value = "FRITZ!Box" },
+]
+
+[[signature]]
+id = "d-link"
+name = "D-Link"
+class = "isp_routers"
+radio = "wifi"
+rules = [{ kind = "vendor", value = "D-Link" }]
+
+[[signature]]
+id = "mikrotik"
+name = "MikroTik"
+class = "isp_routers"
+radio = "wifi"
+rules = [
+    { kind = "vendor", value = "Routerboard" },
+    { kind = "vendor", value = "MikroTik" },
+]
+
+[[signature]]
+id = "plume"
+name = "Plume"
+class = "isp_routers"
+radio = "wifi"
+rules = [{ kind = "vendor", value = "Plume" }]
+
+[[signature]]
+id = "fortinet"
+name = "Fortinet"
+class = "isp_routers"
+radio = "wifi"
+rules = [{ kind = "vendor", value = "Fortinet" }]
+
+[[signature]]
+id = "extreme"
+name = "Extreme Networks"
+class = "isp_routers"
+radio = "wifi"
+rules = [{ kind = "vendor", value = "Extreme Networks" }]
+
+[[signature]]
+id = "nokia"
+name = "Nokia"
+class = "isp_routers"
+radio = "wifi"
+rules = [{ kind = "vendor", value = "Nokia" }]
+
+[[signature]]
+id = "hitron"
+name = "Hitron"
+class = "isp_routers"
+radio = "wifi"
+rules = [{ kind = "vendor", value = "Hitron" }]
+
+[[signature]]
+id = "askey"
+name = "Askey"
+class = "isp_routers"
+radio = "wifi"
+rules = [{ kind = "vendor", value = "Askey" }]
+
+[[signature]]
+id = "arcadyan"
+name = "Arcadyan"
+class = "isp_routers"
+radio = "wifi"
+rules = [{ kind = "vendor", value = "Arcadyan" }]
+
+[[signature]]
+id = "sercomm"
+name = "Sercomm"
+class = "isp_routers"
+radio = "wifi"
+rules = [{ kind = "vendor", value = "Sercomm" }]
+
+[[signature]]
+id = "zyxel"
+name = "Zyxel"
+class = "isp_routers"
+radio = "wifi"
+rules = [{ kind = "vendor", value = "Zyxel" }]
+
+[[signature]]
+id = "starlink"
+name = "Starlink"
+class = "isp_routers"
+radio = "wifi"
+rules = [
+    { kind = "vendor", value = "Space Exploration Technologies" },
+    { kind = "name", value = "STARLINK" },
+]
+
+[[signature]]
+id = "mobile-hotspot"
+name = "Mobile hotspot (MiFi)"
+class = "isp_routers"
+radio = "wifi"
+rules = [
+    { kind = "vendor", value = "Inseego" },
+    { kind = "name_regex", value = '(?i)^(mifi|jetpack|nighthawk m)' },
+]
+
+
+# ═══ Off-grid comms ══════════════════════════════════════════════════════════
+
+[[signature]]
+id = "meshtastic"
+name = "Meshtastic node"
+class = "off_grid"
+radio = "bluetooth"
+notes = "LoRa mesh radio. Default Bluetooth name is Meshtastic_xxxx (last 4 hex digits of its MAC) or ShortName_xxxx."
+rules = [
+    { kind = "ble_service", value = "6BA1B218-15A8-461F-9FA8-5DCAE273EAFD" },
+    { kind = "name_regex", value = '^Meshtastic_[0-9a-f]{4}$' },
+]
+
+[[signature]]
+id = "gotenna"
+name = "goTenna"
+class = "off_grid"
+radio = "bluetooth"
+rules = [{ kind = "name_regex", value = '(?i)^gotenna' }]
+
+[[signature]]
+id = "garmin-inreach"
+name = "Garmin inReach"
+class = "off_grid"
+radio = "bluetooth"
+rules = [{ kind = "name_regex", value = '(?i)inreach' }]
+
+[[signature]]
+id = "zoleo"
+name = "ZOLEO satellite messenger"
+class = "off_grid"
+radio = "bluetooth"
+rules = [{ kind = "name_regex", value = '(?i)^zoleo' }]
+
+
+# ═══ Pentest ═════════════════════════════════════════════════════════════════
+
+[[signature]]
+id = "flipper-zero"
+name = "Flipper Zero"
+class = "pentest"
+radio = "bluetooth"
+notes = "Flipper Devices company ID (0x0E29), the default 'Flipper <name>' Bluetooth name, or the STM32WB public address range the Flipper derives its MAC from (80:E1:26/27 — other STM32WB gadgets share it)."
+extra_attention = "A radio multi-tool: it can read and clone some badges, replay remote-control signals and spam Bluetooth pairing pop-ups. Usually a hobbyist, but worth noticing."
+rules = [
+    { kind = "ble_company", value = "0E29" },
+    { kind = "name_regex", value = '^Flipper ' },
+    { kind = "mac_prefix", value = "80:E1:26" },
+    { kind = "mac_prefix", value = "80:E1:27" },
+]
+
+[[signature]]
+id = "wifi-pineapple"
+name = "Hak5 WiFi Pineapple"
+class = "pentest"
+radio = "wifi"
+notes = "Default management hotspot name of the WiFi Pineapple."
+extra_attention = "A rogue access point tool: it can impersonate networks your devices trust. Avoid joining unknown open networks nearby."
+rules = [{ kind = "name_regex", value = '^Pineapple_' }]
+
+[[signature]]
+id = "deauther"
+name = "ESP8266 Deauther"
+class = "pentest"
+radio = "wifi"
+notes = "'pwned' is the default hotspot name of the spacehuhn ESP8266 Deauther firmware."
+extra_attention = "Deauther firmware can knock devices off Wi-Fi."
+rules = [{ kind = "name_regex", value = '^pwned$' }]
+
+[[signature]]
+id = "pwnagotchi"
+name = "Pwnagotchi"
+class = "pentest"
+radio = "wifi"
+notes = "Pwnagotchi beacons come from the fixed address DE:AD:BE:EF:DE:AD."
+extra_attention = "Collects Wi-Fi handshakes for offline password cracking."
+rules = [{ kind = "mac_prefix", value = "DE:AD:BE:EF:DE:AD" }]
+
+[[signature]]
+id = "marauder"
+name = "ESP32 Marauder"
+class = "pentest"
+radio = "wifi"
+extra_attention = "Wi-Fi/Bluetooth attack firmware for ESP32 boards."
+rules = [{ kind = "name_regex", value = '(?i)marauder' }]
+
+[[signature]]
+id = "omg-cable"
+name = "O.MG cable"
+class = "pentest"
+radio = "wifi"
+notes = "Default hotspot of the O.MG cable, a USB cable with a hidden implant."
+extra_attention = "A USB cable that can type keystrokes into a computer it is plugged into."
+rules = [{ kind = "name_regex", value = '^O\.MG' }]
+
+
+# ═══ Phones / PCs ════════════════════════════════════════════════════════════
+
+[[signature]]
+id = "apple-device"
+name = "Apple device"
+class = "phones_pcs"
+radio = "bluetooth"
+notes = "Apple Continuity adverts: Nearby Info (0x10), Handoff (0x0C), Nearby Action (0x0F), AirDrop (0x05) and hotspot (0x0D/0x0E). iPhones, iPads, Macs and Apple Watches. Addresses rotate about every 15 minutes."
+rules = [
+    { kind = "ble_company", value = "004C:10" },
+    { kind = "ble_company", value = "004C:0C" },
+    { kind = "ble_company", value = "004C:0F" },
+    { kind = "ble_company", value = "004C:05" },
+    { kind = "ble_company", value = "004C:0D" },
+    { kind = "ble_company", value = "004C:0E" },
+]
+
+[[signature]]
+id = "microsoft-device"
+name = "Windows PC / Microsoft"
+class = "phones_pcs"
+radio = "bluetooth"
+notes = "Microsoft company ID: Windows 'Swift Pair' and Connected Devices Platform adverts, Surface and Xbox accessories."
+rules = [{ kind = "ble_company", value = "0006" }]
+
+[[signature]]
+id = "samsung-galaxy"
+name = "Samsung Galaxy device"
+class = "phones_pcs"
+radio = "bluetooth"
+rules = [{ kind = "ble_company", value = "0075" }]
+
+[[signature]]
+id = "google-android"
+name = "Android / Google device"
+class = "phones_pcs"
+radio = "bluetooth"
+notes = "Google company IDs and Google 'Nearby' services (0xFE9F, 0xFEF3). Phones, Chromecasts, Pixel devices."
+rules = [
+    { kind = "ble_company", value = "00E0" },
+    { kind = "ble_company", value = "018E" },
+    { kind = "ble_service", value = "FE9F" },
+    { kind = "ble_service", value = "FEF3" },
+]
+
+[[signature]]
+id = "huawei-device"
+name = "Huawei device"
+class = "phones_pcs"
+radio = "bluetooth"
+rules = [{ kind = "ble_company", value = "027D" }]
+
+[[signature]]
+id = "oppo-oneplus-vivo"
+name = "OnePlus / Oppo / vivo"
+class = "phones_pcs"
+radio = "bluetooth"
+rules = [
+    { kind = "ble_company", value = "072F" },
+    { kind = "ble_company", value = "079A" },
+    { kind = "ble_company", value = "0837" },
+]
+
+[[signature]]
+id = "phone-hotspot"
+name = "Phone hotspot"
+class = "phones_pcs"
+radio = "wifi"
+rules = [
+    { kind = "name_regex", value = '(?i)(iphone|galaxy|pixel|androidap|redmi|oneplus|moto g|huawei p)' },
+]
+
+[[signature]]
+id = "game-controller"
+name = "Game controller / peripheral"
+class = "phones_pcs"
+radio = "bluetooth"
+rules = [
+    { kind = "ble_company", value = "0553" },
+    { kind = "ble_company", value = "068E" },
+    { kind = "ble_company", value = "01DA" },
+    { kind = "ble_company", value = "055D" },
+]
+
+
+# ═══ Public safety ═══════════════════════════════════════════════════════════
+
+[[signature]]
+id = "axon"
+name = "Axon body camera / Taser"
+class = "public_safety"
+notes = "Axon Enterprise (formerly Taser International) network hardware: police body cameras, Tasers, in-car video and Axon Signal sensors."
+rules = [{ kind = "vendor", value = "Axon Enterprise" }]
+
+[[signature]]
+id = "sierra-airlink"
+name = "AirLink vehicle router"
+class = "public_safety"
+radio = "wifi"
+notes = "Sierra Wireless AirLink rugged LTE routers, common in police cars, ambulances, fire trucks and transit."
+rules = [
+    { kind = "vendor", value = "AirLink Communications" },
+    { kind = "vendor", value = "Sierra Wireless" },
+    { kind = "name_regex", value = '(?i)airlink' },
+]
+
+[[signature]]
+id = "cradlepoint"
+name = "Cradlepoint vehicle router"
+class = "public_safety"
+radio = "wifi"
+notes = "Cradlepoint (Ericsson) IBR routers are common in police, fire and EMS vehicles."
+rules = [
+    { kind = "vendor", value = "CradlePoint" },
+    { kind = "name_regex", value = '(?i)^(ibr\d|cradlepoint|cp-)' },
+]
+
+[[signature]]
+id = "motorola-solutions"
+name = "Motorola Solutions"
+class = "public_safety"
+notes = "Two-way radios, body cameras (WatchGuard) and in-car systems."
+rules = [
+    { kind = "vendor", value = "Motorola Solutions" },
+    { kind = "ble_company", value = "04EC" },
+]
+
+
+# ═══ Retail beacons ══════════════════════════════════════════════════════════
+
+[[signature]]
+id = "ibeacon"
+name = "iBeacon"
+class = "retail_beacons"
+radio = "bluetooth"
+decoder = "ibeacon"
+notes = "Apple iBeacon format (type 0x02, length 0x15): a UUID plus major/minor numbers. Used for indoor location and shop proximity marketing."
+rules = [{ kind = "ble_company", value = "004C:02 15" }]
+
+[[signature]]
+id = "eddystone"
+name = "Eddystone beacon"
+class = "retail_beacons"
+radio = "bluetooth"
+decoder = "eddystone"
+notes = "Google Eddystone UID / URL / TLM / EID frames."
+rules = [
+    { kind = "ble_service", value = "FEAA:00" },
+    { kind = "ble_service", value = "FEAA:10" },
+    { kind = "ble_service", value = "FEAA:20" },
+    { kind = "ble_service", value = "FEAA:30" },
+]
+
+[[signature]]
+id = "estimote"
+name = "Estimote beacon"
+class = "retail_beacons"
+radio = "bluetooth"
+rules = [
+    { kind = "ble_company", value = "015D" },
+    { kind = "ble_service", value = "FE9A" },
+]
+
+[[signature]]
+id = "kontakt"
+name = "Kontakt.io beacon"
+class = "retail_beacons"
+radio = "bluetooth"
+rules = [
+    { kind = "ble_company", value = "01FD" },
+    { kind = "ble_service", value = "FE6A" },
+]
+
+[[signature]]
+id = "radius-networks"
+name = "Radius Networks beacon"
+class = "retail_beacons"
+radio = "bluetooth"
+rules = [{ kind = "ble_company", value = "0118" }]
+
+
+# ═══ Surveillance ════════════════════════════════════════════════════════════
+
+[[signature]]
+id = "flock-safety"
+name = "Flock Safety camera"
+class = "surveillance"
+notes = "Automated license plate reader (ALPR). Identifiers from community research (flock-you, DeFlock): Flock's own MAC block, its battery/camera names, and Bluetooth company 0x09C8 (XUNTONG). Names like 'Penguin' can match unrelated devices."
+extra_attention = "License plate reader camera. These log every passing vehicle."
+rules = [
+    { kind = "vendor", value = "Flock Safety" },
+    { kind = "ble_company", value = "09C8" },
+    { kind = "name_regex", value = '(?i)^(flock|fs ext battery|pigvision|flockos|flocksafety)' },
+    { kind = "name_regex", value = '^Penguin' },
+]
+
+[[signature]]
+id = "raven"
+name = "Raven gunshot detector"
+class = "surveillance"
+radio = "bluetooth"
+notes = "Flock 'Raven' acoustic sensors advertise custom 16-bit services 0x3100–0x3500 (community research)."
+extra_attention = "Acoustic gunshot sensor with an always-on microphone."
+rules = [
+    { kind = "ble_service", value = "3100" },
+    { kind = "ble_service", value = "3200" },
+    { kind = "ble_service", value = "3300" },
+    { kind = "ble_service", value = "3400" },
+    { kind = "ble_service", value = "3500" },
+]
+
+
+# ═══ Vehicle ═════════════════════════════════════════════════════════════════
+
+[[signature]]
+id = "tesla"
+name = "Tesla vehicle"
+class = "vehicle"
+notes = "Tesla's Bluetooth name is 'S' + 16 hex digits + 'C', made from a hash of the car's VIN (see teslamotors/vehicle-command). It never changes: the same name is the same car."
+rules = [
+    { kind = "name_regex", value = '^S[0-9a-f]{16}C$' },
+    { kind = "ble_service", value = "00000211-B2D1-43F0-9B88-960CEBF8B91E" },
+    { kind = "ble_company", value = "022B" },
+    { kind = "vendor", value = "Tesla" },
+]
+
+[[signature]]
+id = "ford"
+name = "Ford vehicle"
+class = "vehicle"
+rules = [
+    { kind = "ble_company", value = "0723" },
+    { kind = "name_regex", value = '^SYNC' },
+]
+
+[[signature]]
+id = "gm"
+name = "GM vehicle"
+class = "vehicle"
+rules = [
+    { kind = "ble_company", value = "0068" },
+    { kind = "name_regex", value = '^my(Chevrolet|GMC|Buick|Cadillac)' },
+]
+
+[[signature]]
+id = "car-other"
+name = "Car (Toyota / VW / Hyundai / Rivian)"
+class = "vehicle"
+radio = "bluetooth"
+rules = [
+    { kind = "ble_company", value = "0977" },
+    { kind = "ble_company", value = "011F" },
+    { kind = "ble_company", value = "0826" },
+    { kind = "ble_company", value = "0941" },
+]
+
+[[signature]]
+id = "car-hotspot"
+name = "Car Wi-Fi hotspot"
+class = "vehicle"
+radio = "wifi"
+rules = [
+    { kind = "name_regex", value = '(?i)^(audi_mmi|vw_wlan|mb wlan|bmw ?\d|uconnect|toyota|lexus|hyundai|kia|subaru)' },
+]
+
+[[signature]]
+id = "tpms"
+name = "Bluetooth TPMS sensor"
+class = "vehicle"
+radio = "bluetooth"
+notes = "Aftermarket tyre-pressure sensors (factory TPMS uses 315/433 MHz and is not visible here)."
+rules = [
+    { kind = "name_regex", value = '(?i)tpms' },
+    { kind = "name_regex", value = '(?i)^fobo' },
+]
+
+[[signature]]
+id = "obd-dongle"
+name = "OBD-II Bluetooth dongle"
+class = "vehicle"
+rules = [
+    { kind = "name_regex", value = '(?i)^(obdii|obd2|obdlink|vgate|v-link|veepeak|ios-vlink)' },
+]
+
+
+# ═══ Wearables ═══════════════════════════════════════════════════════════════
+
+[[signature]]
+id = "garmin"
+name = "Garmin watch"
+class = "wearables"
+radio = "bluetooth"
+rules = [{ kind = "ble_company", value = "0087" }]
+
+[[signature]]
+id = "fitbit"
+name = "Fitbit"
+class = "wearables"
+radio = "bluetooth"
+rules = [
+    { kind = "name_regex", value = '(?i)^(fitbit|charge [2-6]|versa|inspire [1-3]|luxe)' },
+]
+
+[[signature]]
+id = "oura"
+name = "Oura ring"
+class = "wearables"
+radio = "bluetooth"
+rules = [
+    { kind = "ble_company", value = "02B2" },
+    { kind = "ble_company", value = "0304" },
+    { kind = "name_regex", value = '(?i)^oura' },
+]
+
+[[signature]]
+id = "whoop"
+name = "WHOOP strap"
+class = "wearables"
+radio = "bluetooth"
+rules = [{ kind = "name_regex", value = '(?i)^whoop' }]
+
+[[signature]]
+id = "polar-suunto-wahoo"
+name = "Polar / Suunto / Wahoo"
+class = "wearables"
+radio = "bluetooth"
+rules = [
+    { kind = "ble_company", value = "006B" },
+    { kind = "ble_company", value = "00D1" },
+    { kind = "ble_company", value = "009F" },
+    { kind = "ble_company", value = "01FC" },
+]
+
+[[signature]]
+id = "amazfit"
+name = "Amazfit / Zepp"
+class = "wearables"
+radio = "bluetooth"
+rules = [
+    { kind = "ble_company", value = "0157" },
+    { kind = "name_regex", value = '(?i)^amazfit' },
+]
+
+[[signature]]
+id = "smartwatch-other"
+name = "Smartwatch / band"
+class = "wearables"
+radio = "bluetooth"
+rules = [
+    { kind = "name_regex", value = '(?i)(galaxy watch|pixel watch|mi smart band|xiaomi smart band|mi band|coros)' },
+]
+
+[[signature]]
+id = "plaud"
+name = "PLAUD AI recorder"
+class = "wearables"
+radio = "bluetooth"
+notes = "PLAUD Note / NotePin voice recorders (company 0x0FB2)."
+extra_attention = "An AI voice recorder: conversations nearby may be recorded and transcribed."
+rules = [
+    { kind = "ble_company", value = "0FB2" },
+    { kind = "name_regex", value = '(?i)^plaud' },
+]
+
+[[signature]]
+id = "ai-pendant"
+name = "AI pendant (Fieldy / Friend / Omi / Limitless)"
+class = "wearables"
+radio = "bluetooth"
+notes = "Always-listening AI wearables, matched by their default names (best effort)."
+extra_attention = "An always-listening AI wearable: conversations nearby may be recorded."
+rules = [
+    { kind = "name_regex", value = '(?i)^(fieldy|friend( |_|$)|omi( |_|$)|limitless)' },
+]
+
+
+# ═══ Other ═══════════════════════════════════════════════════════════════════
+
+[[signature]]
+id = "open-wifi"
+name = "Open Wi-Fi (no password)"
+class = "other"
+radio = "wifi"
+notes = "No encryption. Anyone nearby can read traffic that is not protected by HTTPS or a VPN."
+rules = [{ kind = "wifi_security", value = "open" }]
+
+[[signature]]
+id = "raspberry-pi"
+name = "Raspberry Pi"
+class = "other"
+notes = "Hobby computers. Also the base of many DIY sensors and tools."
+rules = [{ kind = "vendor", value = "Raspberry Pi" }]
