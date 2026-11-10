@@ -13,7 +13,6 @@ coming soon...
 
 ## Installation
 
----
 Linux:
 ```
 coming soon...
@@ -33,5 +32,5 @@ coming soon...
 ## Disclaimer
 This is a hobby project, so please note several things:
 
-- Use at your own risk. I am not responsible for any damages that may arise from its use.
+- Use at your own risk. I am not responsible for any damages that may arise from its misuse.
 - This tool cannot guarantee that every device will be found.
