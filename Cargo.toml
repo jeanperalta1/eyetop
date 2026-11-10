@@ -9,7 +9,7 @@ keywords = ["wifi", "bluetooth", "ble", "tui", "counter-surveillance"]
 categories = ["command-line-utilities"]
 
 [dependencies]
-# Terminal user interface (ratatui re-exports crossterm for keyboard input).
+# Terminal user interface
 ratatui = "0.30"
 
 # Bluetooth LE scanning. On Linux it talks to BlueZ over D-Bus, on macOS to
@@ -24,7 +24,7 @@ tokio = { version = "1", features = [
 futures = "0.3"
 uuid = { version = "1", features = ["serde"] }
 
-# Reading and writing settings, signatures and reports.
+# Reading and writing settings, signatures and reports
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
 toml = "1"
